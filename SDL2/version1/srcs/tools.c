@@ -6,7 +6,7 @@
 /*   By: ebatchas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 11:12:03 by ebatchas          #+#    #+#             */
-/*   Updated: 2018/12/16 13:48:14 by ebatchas         ###   ########.fr       */
+/*   Updated: 2018/12/24 17:50:19 by ebatchas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	ft_rotate_x(t_poind *u, double *z, double angle)
 	prev_x = u->x;
 	prev_y = u->y;
 	prev_z = *z;
-	u->x = prev_x * cos(angle) - prev_y * sin(angle);
-	u->y = prev_x * sin(angle) + prev_y * cos(angle);
+	u->y = prev_y * cos(angle) + prev_z * sin(angle);
+	*z = prev_z * cos(angle) - prev_y * sin(angle);
 }
 
 void	ft_rotate_y(t_poind *u, double *z, double angle)
@@ -68,8 +68,8 @@ void	ft_rotate_y(t_poind *u, double *z, double angle)
 	prev_x = u->x;
 	prev_y = u->y;
 	prev_z = *z;
-	u->y = prev_y * cos(angle) - prev_z * sin(angle);
-	*z = prev_y * sin(angle) + prev_z * cos(angle);
+	u->x = prev_x * cos(angle) + prev_z * sin(angle);
+	*z = -prev_x * sin(angle) + prev_z* cos(angle);
 }
 
 void	ft_rotate_z(t_poind *u, double *z, double angle)
@@ -81,6 +81,6 @@ void	ft_rotate_z(t_poind *u, double *z, double angle)
 	prev_x = u->x;
 	prev_y = u->y;
 	prev_z = *z;
-	u->x = prev_x * cos(angle) + prev_z * sin(angle);
-	*z = -prev_x * sin(angle) + prev_z * cos(angle);
+	u->x = prev_x * cos(angle) - prev_y * sin(angle);
+	u->y = -prev_x * sin(angle) + prev_y * cos(angle);
 }
